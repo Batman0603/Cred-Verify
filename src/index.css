@@ -16,10 +16,45 @@ body {
 
 .brutal-btn {
   @apply border-4 border-black bg-white px-4 py-2 font-bold uppercase tracking-wide shadow-[4px_4px_0_0_#000] transition hover:-translate-y-0.5 hover:translate-x-0.5 hover:shadow-[2px_2px_0_0_#000] dark:border-slate-200 dark:bg-slate-800;
-body {
-  @apply min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 text-slate-100;
 }
 
-.glass {
-  @apply border border-white/10 bg-white/5 backdrop-blur-md;
+button:not(.auth-btn):not(:disabled) {
+  @apply transition;
+}
+
+button:not(.auth-btn):not(:disabled):hover {
+  @apply bg-black text-white dark:bg-slate-100 dark:text-black;
+}
+
+.auth-btn:not(:disabled):hover {
+  @apply bg-orange-500 text-black dark:bg-orange-500 dark:text-black;
+}
+
+@keyframes landingReveal {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes landingFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.landing-reveal {
+  animation: landingReveal 0.6s ease-out both;
+}
+
+.landing-float {
+  animation: landingFloat 3.2s ease-in-out infinite;
 }

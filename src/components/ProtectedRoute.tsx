@@ -1,21 +1,20 @@
+import { ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
 import { dashboardRouteByRole, useAuth } from '../context/AuthContext';
-import { useAuth } from '../context/AuthContext';
 import { UserRole } from '../types';
 
-const ProtectedRoute = ({ children, requiredRole }: { children: JSX.Element; requiredRole?: UserRole }) => {
+const ProtectedRoute = ({ children, requiredRole }: { children: ReactNode; requiredRole?: UserRole }) => {
   const { isAuthenticated, user } = useAuth();
 
   if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/" replace />;
   }
 
   if (requiredRole && user?.role !== requiredRole) {
     return <Navigate to={dashboardRouteByRole(user!.role)} replace />;
-    return <Navigate to={`/${user?.role}`} replace />;
   }
 
-  return children;
+  return <>{children}</>;
 };
 
 export default ProtectedRoute;

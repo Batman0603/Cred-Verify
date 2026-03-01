@@ -3,10 +3,7 @@ import { anchorCredentialToBlockchain, verifyBlockchainHash } from './mockBlockc
 
 const createCredentialId = () => `CRD-${Date.now().toString().slice(-7)}-${Math.floor(Math.random() * 9999)}`;
 
-type IssueInput = Omit<
-  Credential,
-  'id' | 'status' | 'blockchainHash' | 'transactionHash'
->;
+type IssueInput = Omit<Credential, 'id' | 'status' | 'blockchainHash' | 'transactionHash'>;
 
 const buildPayload = (id: string, data: IssueInput) =>
   JSON.stringify({
@@ -23,12 +20,6 @@ const buildPayload = (id: string, data: IssueInput) =>
 export const issueCredential = async (data: IssueInput): Promise<Credential> => {
   const id = createCredentialId();
   const chain = await anchorCredentialToBlockchain(buildPayload(id, data));
-export const issueCredential = async (
-  data: Omit<Credential, 'id' | 'status' | 'blockchainHash' | 'transactionHash'>,
-): Promise<Credential> => {
-  const id = createCredentialId();
-  const payload = JSON.stringify({ id, ...data });
-  const chain = await anchorCredentialToBlockchain(payload);
 
   return {
     ...data,
@@ -44,6 +35,7 @@ export const createSeedCredential = async (
 ): Promise<Credential> => {
   const id = data.id ?? createCredentialId();
   const chain = await anchorCredentialToBlockchain(buildPayload(id, data));
+
   return {
     ...data,
     id,
@@ -55,15 +47,5 @@ export const createSeedCredential = async (
 
 export const verifyCredentialOnChain = async (credential: Credential) => {
   const payload = buildPayload(credential.id, credential);
-export const verifyCredentialOnChain = async (credential: Credential) => {
-  const payload = JSON.stringify({
-    id: credential.id,
-    studentName: credential.studentName,
-    studentId: credential.studentId,
-    degree: credential.degree,
-    issueDate: credential.issueDate,
-    universityName: credential.universityName,
-  });
-
   return verifyBlockchainHash(payload, credential.blockchainHash);
 };

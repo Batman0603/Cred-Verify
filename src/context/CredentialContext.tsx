@@ -5,11 +5,13 @@ import {
   issueCredential,
   verifyCredentialOnChain,
 } from '../services/mockCredentialService';
+import { upsertStudentLogin } from '../services/mockAuthService';
 
 export interface IssueCredentialInput {
   studentName: string;
   studentId: string;
   studentEmail: string;
+  studentPassword: string;
   degree: string;
   issueDate: string;
   universityName: string;
@@ -19,16 +21,6 @@ export interface IssueCredentialInput {
 interface UpdateCredentialInput {
   degree: string;
   issueDate: string;
-import { createContext, ReactNode, useContext, useMemo, useState } from 'react';
-import { Credential, VerificationResult } from '../types';
-import { issueCredential, verifyCredentialOnChain } from '../services/mockCredentialService';
-
-interface IssueCredentialInput {
-  studentName: string;
-  studentId: string;
-  degree: string;
-  issueDate: string;
-  universityName: string;
 }
 
 interface CredentialContextValue {
@@ -82,6 +74,7 @@ export const CredentialProvider = ({ children }: { children: ReactNode }) => {
   }, [credentials.length]);
 
   const issueNewCredential = async (input: IssueCredentialInput) => {
+    upsertStudentLogin(input.studentName, input.studentEmail, input.studentPassword);
     const credential = await issueCredential(input);
     setCredentials((prev) => [credential, ...prev]);
     return credential;
@@ -131,7 +124,6 @@ export const CredentialProvider = ({ children }: { children: ReactNode }) => {
 
   const value = useMemo(
     () => ({ credentials, issueNewCredential, updateCredential, deleteCredential, revokeCredential, verifyCredential }),
-    () => ({ credentials, issueNewCredential, revokeCredential, verifyCredential }),
     [credentials],
   );
 

@@ -17,13 +17,11 @@ export interface Credential {
   studentName: string;
   studentId: string;
   studentEmail: string;
+  studentPassword?: string;
   degree: string;
   issueDate: string;
   universityName: string;
   issuerEmail: string;
-  degree: string;
-  issueDate: string;
-  universityName: string;
   status: CredentialStatus;
   blockchainHash: string;
   transactionHash: string;

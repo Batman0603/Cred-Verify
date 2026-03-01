@@ -4,6 +4,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Landing from './pages/Landing';
 import Login from './pages/Login';
 import MerchantDashboard from './pages/MerchantDashboard';
+import MyCredentials from './pages/MyCredentials';
 import Register from './pages/Register';
 import RoleSelector from './pages/RoleSelector';
 import StudentDashboard from './pages/StudentDashboard';
@@ -43,13 +44,26 @@ const App = () => (
         element={
           <ProtectedRoute requiredRole="university">
             <UniversityDashboard view="credentials" />
-        path="/university"
-        element={
-          <ProtectedRoute requiredRole="university">
-            <UniversityDashboard />
           </ProtectedRoute>
         }
       />
+      <Route
+        path="/university"
+        element={
+          <ProtectedRoute requiredRole="university">
+            <UniversityDashboard view="dashboard" />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/university/my-credentials"
+        element={
+          <ProtectedRoute requiredRole="university">
+            <MyCredentials />
+          </ProtectedRoute>
+        }
+      />
+
       <Route
         path="/student/dashboard"
         element={
@@ -59,22 +73,27 @@ const App = () => (
         }
       />
       <Route
-        path="/student/credentials"
+        path="/student"
         element={
           <ProtectedRoute requiredRole="student">
-            <StudentDashboard view="credentials" />
+            <StudentDashboard view="dashboard" />
           </ProtectedRoute>
         }
       />
+      <Route
+        path="/student/my-credentials"
+        element={
+          <ProtectedRoute requiredRole="student">
+            <MyCredentials />
+          </ProtectedRoute>
+        }
+      />
+
       <Route
         path="/merchant/dashboard"
         element={
           <ProtectedRoute requiredRole="merchant">
             <MerchantDashboard view="dashboard" />
-        path="/student"
-        element={
-          <ProtectedRoute requiredRole="student">
-            <StudentDashboard />
           </ProtectedRoute>
         }
       />
@@ -83,10 +102,22 @@ const App = () => (
         element={
           <ProtectedRoute requiredRole="merchant">
             <MerchantDashboard view="credentials" />
+          </ProtectedRoute>
+        }
+      />
+      <Route
         path="/merchant"
         element={
           <ProtectedRoute requiredRole="merchant">
-            <MerchantDashboard />
+            <MerchantDashboard view="dashboard" />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/merchant/my-credentials"
+        element={
+          <ProtectedRoute requiredRole="merchant">
+            <MyCredentials />
           </ProtectedRoute>
         }
       />

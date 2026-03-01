@@ -31,29 +31,71 @@ const Landing = () => {
 
   return (
     <div className="mx-auto min-h-screen w-full max-w-[1500px] px-6 py-8">
-      <header className="mb-4 flex items-center justify-between border-4 border-black bg-white px-8 py-5 dark:border-slate-200 dark:bg-slate-900">
+      <header className="landing-reveal mb-4 flex items-center justify-between border-4 border-black bg-white px-8 py-5 dark:border-slate-200 dark:bg-slate-900">
         <div className="flex items-center gap-6">
           <h1 className="text-5xl font-black uppercase tracking-tight">CredFlow</h1>
           <div className="border-4 border-black px-4 py-2 text-sm font-black uppercase dark:border-slate-200">
             Role Gate
           </div>
         </div>
-        <div className="flex gap-3">
-          <button className="brutal-btn">New Session</button>
-          <button className="brutal-btn">Docs</button>
-        </div>
       </header>
 
-      <section className="mb-6 flex items-center justify-between border-y-4 border-black bg-[#e5e7eb] px-8 py-3 text-sm font-bold uppercase dark:border-slate-200 dark:bg-slate-800">
-        <p>
-          Select your role first → then continue to role-scoped login.
+      <section className="landing-reveal mb-6 border-4 border-black bg-gradient-to-r from-[#ffd9a8] via-[#ffedd5] to-[#fde68a] px-8 py-6 dark:border-slate-200 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
+        <h2 className="mb-2 text-3xl font-black uppercase">Trusted Digital Credentials with CredFlow</h2>
+        <p className="max-w-5xl text-sm font-semibold leading-6">
+          CredFlow helps universities issue credentials, lets students securely hold and share them, and allows merchants
+          to verify authenticity using QR + blockchain checks.
         </p>
-        <p>student/university: login only • merchant: login + signup</p>
+      </section>
+
+      <section className="mb-8 grid gap-5 md:grid-cols-3">
+        <article className="landing-float border-4 border-black bg-white p-4 dark:border-slate-200 dark:bg-slate-900">
+          <svg viewBox="0 0 240 110" className="mb-3 h-28 w-full border-2 border-black bg-[#fef3c7] dark:border-slate-200 dark:bg-slate-800">
+            <rect x="20" y="24" width="200" height="62" fill="#fff" stroke="#111" strokeWidth="4" />
+            <rect x="34" y="38" width="100" height="10" fill="#f97316" />
+            <rect x="34" y="56" width="160" height="8" fill="#334155" />
+            <rect x="34" y="70" width="84" height="8" fill="#334155" />
+          </svg>
+          <h3 className="text-lg font-black uppercase">Issue</h3>
+          <p className="text-sm font-semibold">Universities generate secure credentials for students in minutes.</p>
+        </article>
+
+        <article className="landing-float border-4 border-black bg-white p-4 dark:border-slate-200 dark:bg-slate-900">
+          <svg viewBox="0 0 240 110" className="mb-3 h-28 w-full border-2 border-black bg-[#dbeafe] dark:border-slate-200 dark:bg-slate-800">
+            <rect x="18" y="18" width="92" height="72" fill="#fff" stroke="#111" strokeWidth="4" />
+            <rect x="130" y="18" width="92" height="72" fill="#fff" stroke="#111" strokeWidth="4" />
+            <rect x="36" y="36" width="54" height="10" fill="#0ea5e9" />
+            <rect x="146" y="36" width="54" height="10" fill="#16a34a" />
+            <rect x="36" y="56" width="54" height="10" fill="#334155" />
+            <rect x="146" y="56" width="54" height="10" fill="#334155" />
+          </svg>
+          <h3 className="text-lg font-black uppercase">Share</h3>
+          <p className="text-sm font-semibold">Students carry one verifiable identity with QR-ready access.</p>
+        </article>
+
+        <article className="landing-float border-4 border-black bg-white p-4 dark:border-slate-200 dark:bg-slate-900">
+          <svg viewBox="0 0 240 110" className="mb-3 h-28 w-full border-2 border-black bg-[#dcfce7] dark:border-slate-200 dark:bg-slate-800">
+            <rect x="24" y="22" width="78" height="66" fill="#fff" stroke="#111" strokeWidth="4" />
+            <rect x="118" y="22" width="98" height="66" fill="#fff" stroke="#111" strokeWidth="4" />
+            <rect x="138" y="38" width="58" height="10" fill="#16a34a" />
+            <rect x="138" y="56" width="40" height="8" fill="#334155" />
+            <rect x="36" y="34" width="16" height="16" fill="#111" />
+            <rect x="56" y="34" width="16" height="16" fill="#111" />
+            <rect x="36" y="54" width="16" height="16" fill="#111" />
+            <rect x="56" y="54" width="16" height="16" fill="#111" />
+          </svg>
+          <h3 className="text-lg font-black uppercase">Verify</h3>
+          <p className="text-sm font-semibold">Merchants scan QR and validate proof status instantly.</p>
+        </article>
+      </section>
+
+      <section className="landing-reveal mb-3 border-y-4 border-black bg-[#e5e7eb] px-8 py-3 text-sm font-bold uppercase dark:border-slate-200 dark:bg-slate-800">
+        <p>Login Menu: choose your role to continue.</p>
       </section>
 
       <section className="grid gap-5 lg:grid-cols-3">
         {roleColumns.map((column, index) => (
-          <article key={column.role} className="border-4 border-black bg-[#f3f4f6] dark:border-slate-200 dark:bg-slate-900">
+          <article key={column.role} className="landing-reveal border-4 border-black bg-[#f3f4f6] dark:border-slate-200 dark:bg-slate-900">
             <div className="flex items-center justify-between border-b-4 border-black px-5 py-4 dark:border-slate-200">
               <h2 className="text-3xl font-black uppercase">{column.title}</h2>
               <span className="border-4 border-black px-3 py-1 text-sm font-black dark:border-slate-200">0{index + 1}</span>
@@ -67,7 +109,7 @@ const Landing = () => {
                   </p>
                 ))}
               </div>
-              <button onClick={() => continueWithRole(column.role)} className="brutal-btn w-full">
+              <button onClick={() => continueWithRole(column.role)} className="brutal-btn auth-btn w-full">
                 Continue as {column.title}
               </button>
             </div>
@@ -77,42 +119,5 @@ const Landing = () => {
     </div>
   );
 };
-import { Link } from 'react-router-dom';
-
-const features = [
-  'Tamper-proof credentials',
-  'On-chain verification',
-  'Instant revocation controls',
-  'QR-based validation flow',
-];
-
-const Landing = () => (
-  <div className="mx-auto flex min-h-screen w-full max-w-6xl flex-col justify-center px-6 py-12">
-    <div className="glass rounded-3xl p-8 md:p-12">
-      <p className="mb-3 inline-block rounded-full bg-cyan-500/20 px-4 py-1 text-xs font-semibold text-cyan-200">
-        Blockchain Credential Infrastructure
-      </p>
-      <h1 className="text-4xl font-bold md:text-6xl">Secure. Verifiable. Decentralized.</h1>
-      <p className="mt-4 max-w-2xl text-slate-300">
-        University-grade digital credentialing with blockchain anchoring and instant merchant verification.
-      </p>
-      <div className="mt-8 flex flex-wrap gap-3">
-        <Link to="/login" className="rounded-xl bg-cyan-500 px-6 py-3 font-semibold text-slate-950 transition hover:bg-cyan-400">
-          Login
-        </Link>
-        <Link to="/register" className="rounded-xl border border-white/20 px-6 py-3 font-semibold transition hover:bg-white/10">
-          View Demo
-        </Link>
-      </div>
-      <div className="mt-10 grid gap-3 md:grid-cols-2">
-        {features.map((feature) => (
-          <div key={feature} className="rounded-xl border border-white/10 bg-white/5 p-4 text-slate-200">
-            {feature}
-          </div>
-        ))}
-      </div>
-    </div>
-  </div>
-);
 
 export default Landing;
