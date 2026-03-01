@@ -7,6 +7,8 @@ import { AuthProvider } from './context/AuthContext';
 import { CredentialProvider } from './context/CredentialContext';
 import { ThemeProvider } from './context/ThemeContext';
 
+const RootProviders = () => (
+  <ThemeProvider>
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ThemeProvider>
@@ -28,5 +30,16 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         </CredentialProvider>
       </AuthProvider>
     </BrowserRouter>
+  </ThemeProvider>
+);
+
+const rootElement = document.getElementById('root');
+if (!rootElement) {
+  throw new Error('Root element #root not found');
+}
+
+ReactDOM.createRoot(rootElement).render(
+  <React.StrictMode>
+    <RootProviders />
   </React.StrictMode>,
 );
