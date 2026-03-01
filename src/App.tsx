@@ -5,6 +5,7 @@ import Landing from './pages/Landing';
 import Login from './pages/Login';
 import MerchantDashboard from './pages/MerchantDashboard';
 import Register from './pages/Register';
+import RoleSelector from './pages/RoleSelector';
 import StudentDashboard from './pages/StudentDashboard';
 import UniversityDashboard from './pages/UniversityDashboard';
 
@@ -13,6 +14,14 @@ const App = () => (
     <Route path="/" element={<Landing />} />
     <Route path="/login" element={<Login />} />
     <Route path="/register" element={<Register />} />
+    <Route
+      path="/role-select"
+      element={
+        <ProtectedRoute>
+          <RoleSelector />
+        </ProtectedRoute>
+      }
+    />
 
     <Route
       element={
@@ -22,50 +31,26 @@ const App = () => (
       }
     >
       <Route
-        path="/university/dashboard"
+        path="/university"
         element={
           <ProtectedRoute requiredRole="university">
-            <UniversityDashboard view="dashboard" />
+            <UniversityDashboard />
           </ProtectedRoute>
         }
       />
       <Route
-        path="/university/credentials"
-        element={
-          <ProtectedRoute requiredRole="university">
-            <UniversityDashboard view="credentials" />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/student/dashboard"
+        path="/student"
         element={
           <ProtectedRoute requiredRole="student">
-            <StudentDashboard view="dashboard" />
+            <StudentDashboard />
           </ProtectedRoute>
         }
       />
       <Route
-        path="/student/credentials"
-        element={
-          <ProtectedRoute requiredRole="student">
-            <StudentDashboard view="credentials" />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/merchant/dashboard"
+        path="/merchant"
         element={
           <ProtectedRoute requiredRole="merchant">
-            <MerchantDashboard view="dashboard" />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/merchant/credentials"
-        element={
-          <ProtectedRoute requiredRole="merchant">
-            <MerchantDashboard view="credentials" />
+            <MerchantDashboard />
           </ProtectedRoute>
         }
       />
