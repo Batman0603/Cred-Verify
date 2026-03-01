@@ -3,22 +3,22 @@ import { UserRole } from '../types';
 
 const linksByRole: Record<UserRole, { label: string; to: string }[]> = {
   university: [
-    { label: 'Dashboard', to: '/university/dashboard' },
-    { label: 'Credentials', to: '/university/credentials' },
+    { label: 'Dashboard', to: '/university' },
+    { label: 'Issue Credentials', to: '/university' },
   ],
   student: [
-    { label: 'Dashboard', to: '/student/dashboard' },
-    { label: 'My Credentials', to: '/student/credentials' },
+    { label: 'Dashboard', to: '/student' },
+    { label: 'My Credentials', to: '/student' },
   ],
   merchant: [
-    { label: 'Dashboard', to: '/merchant/dashboard' },
-    { label: 'Credentials', to: '/merchant/credentials' },
+    { label: 'Verifier', to: '/merchant' },
+    { label: 'Public Validation', to: '/merchant' },
   ],
 };
 
 const Sidebar = ({ role }: { role: UserRole }) => (
   <aside className="glass hidden min-h-[calc(100vh-4rem)] w-64 p-4 md:block">
-    <h2 className="mb-4 text-sm font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-300">Navigation</h2>
+    <h2 className="mb-4 text-sm font-semibold uppercase tracking-widest text-slate-300">Navigation</h2>
     <nav className="space-y-2">
       {linksByRole[role].map((link) => (
         <NavLink
@@ -26,9 +26,7 @@ const Sidebar = ({ role }: { role: UserRole }) => (
           to={link.to}
           className={({ isActive }) =>
             `block rounded-lg px-3 py-2 text-sm transition ${
-              isActive
-                ? 'bg-blue-100 text-blue-700 dark:bg-cyan-500/20 dark:text-cyan-200'
-                : 'text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-white/10'
+              isActive ? 'bg-cyan-500/20 text-cyan-200' : 'text-slate-300 hover:bg-white/10'
             }`
           }
         >
