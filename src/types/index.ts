@@ -6,12 +6,21 @@ export interface User {
   role: UserRole;
 }
 
+export interface AuthUser extends User {
+  password: string;
+}
+
 export type CredentialStatus = 'active' | 'revoked';
 
 export interface Credential {
   id: string;
   studentName: string;
   studentId: string;
+  studentEmail: string;
+  degree: string;
+  issueDate: string;
+  universityName: string;
+  issuerEmail: string;
   degree: string;
   issueDate: string;
   universityName: string;

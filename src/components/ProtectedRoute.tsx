@@ -1,4 +1,5 @@
 import { Navigate } from 'react-router-dom';
+import { dashboardRouteByRole, useAuth } from '../context/AuthContext';
 import { useAuth } from '../context/AuthContext';
 import { UserRole } from '../types';
 
@@ -10,6 +11,7 @@ const ProtectedRoute = ({ children, requiredRole }: { children: JSX.Element; req
   }
 
   if (requiredRole && user?.role !== requiredRole) {
+    return <Navigate to={dashboardRouteByRole(user!.role)} replace />;
     return <Navigate to={`/${user?.role}`} replace />;
   }
 

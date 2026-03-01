@@ -31,6 +31,18 @@ const App = () => (
       }
     >
       <Route
+        path="/university/dashboard"
+        element={
+          <ProtectedRoute requiredRole="university">
+            <UniversityDashboard view="dashboard" />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/university/credentials"
+        element={
+          <ProtectedRoute requiredRole="university">
+            <UniversityDashboard view="credentials" />
         path="/university"
         element={
           <ProtectedRoute requiredRole="university">
@@ -39,6 +51,26 @@ const App = () => (
         }
       />
       <Route
+        path="/student/dashboard"
+        element={
+          <ProtectedRoute requiredRole="student">
+            <StudentDashboard view="dashboard" />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/student/credentials"
+        element={
+          <ProtectedRoute requiredRole="student">
+            <StudentDashboard view="credentials" />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/merchant/dashboard"
+        element={
+          <ProtectedRoute requiredRole="merchant">
+            <MerchantDashboard view="dashboard" />
         path="/student"
         element={
           <ProtectedRoute requiredRole="student">
@@ -47,6 +79,10 @@ const App = () => (
         }
       />
       <Route
+        path="/merchant/credentials"
+        element={
+          <ProtectedRoute requiredRole="merchant">
+            <MerchantDashboard view="credentials" />
         path="/merchant"
         element={
           <ProtectedRoute requiredRole="merchant">

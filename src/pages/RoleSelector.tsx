@@ -1,3 +1,6 @@
+import { Navigate } from 'react-router-dom';
+
+const RoleSelector = () => <Navigate to="/" replace />;
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { UserRole } from '../types';
