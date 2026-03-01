@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Space Mono', 'IBM Plex Mono', 'Courier New', monospace;
+}
+
+body {
+  @apply min-h-screen bg-[#efefef] text-[#111] dark:bg-[#0f172a] dark:text-slate-100;
+}
+
+.glass {
+  @apply border-4 border-black bg-[#f3f3f3] dark:border-slate-300 dark:bg-slate-900;
+}
+
+.brutal-btn {
+  @apply border-4 border-black bg-white px-4 py-2 font-bold uppercase tracking-wide shadow-[4px_4px_0_0_#000] transition hover:-translate-y-0.5 hover:translate-x-0.5 hover:shadow-[2px_2px_0_0_#000] dark:border-slate-200 dark:bg-slate-800;
+}
