@@ -20,23 +20,16 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const login = async (email: string, password: string) => {
     setIsLoading(true);
-    try {
-      const profile = await mockLogin(email, password);
-      setUser({ ...profile, role: 'student' });
-    } finally {
-      setIsLoading(false);
-    }
+    const profile = await mockLogin(email, password);
+    setUser({ ...profile, role: 'student' });
+    setIsLoading(false);
   };
 
   const register = async (name: string, email: string, password: string) => {
     setIsLoading(true);
-    try {
-      const profile = await mockRegister(name, email, password);
-      // Only merchants can create/register new users in this prototype.
-      setUser({ ...profile, role: 'merchant' });
-    } finally {
-      setIsLoading(false);
-    }
+    const profile = await mockRegister(name, email, password);
+    setUser({ ...profile, role: 'student' });
+    setIsLoading(false);
   };
 
   const setRole = (role: UserRole) => setUser((prev) => (prev ? { ...prev, role } : prev));

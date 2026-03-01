@@ -20,13 +20,13 @@ const Login = () => {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-slate-100 px-4 dark:bg-slate-950">
+    <div className="flex min-h-screen items-center justify-center px-4">
       <form onSubmit={submit} className="glass w-full max-w-md rounded-2xl p-6">
         <h1 className="text-2xl font-bold">Login to CredVerify</h1>
-        <p className="mb-6 text-sm text-slate-500 dark:text-slate-400">Access your decentralized credential workspace.</p>
+        <p className="mb-6 text-sm text-slate-400">Access your decentralized credential workspace.</p>
         <div className="space-y-4">
           <input
-            className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 dark:border-white/20 dark:bg-slate-950/60"
+            className="w-full rounded-xl border border-white/20 bg-slate-950/60 px-4 py-3"
             placeholder="Email"
             type="email"
             value={form.email}
@@ -34,22 +34,19 @@ const Login = () => {
             required
           />
           <input
-            className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 dark:border-white/20 dark:bg-slate-950/60"
+            className="w-full rounded-xl border border-white/20 bg-slate-950/60 px-4 py-3"
             placeholder="Password"
             type="password"
             value={form.password}
             onChange={(e) => setForm((prev) => ({ ...prev, password: e.target.value }))}
             required
           />
-          {error && <p className="text-sm text-rose-500 dark:text-rose-300">{error}</p>}
-          <button className="w-full rounded-xl bg-blue-600 px-4 py-3 font-semibold text-white" disabled={isLoading}>
+          {error && <p className="text-sm text-rose-300">{error}</p>}
+          <button className="w-full rounded-xl bg-cyan-500 px-4 py-3 font-semibold text-slate-950" disabled={isLoading}>
             {isLoading ? 'Authenticating...' : 'Login'}
           </button>
-          <p className="text-center text-sm text-slate-500 dark:text-slate-400">
-            Need a merchant account?{' '}
-            <Link to="/register" className="text-blue-600 dark:text-cyan-300">
-              Register
-            </Link>
+          <p className="text-center text-sm text-slate-400">
+            Need an account? <Link to="/register" className="text-cyan-300">Register</Link>
           </p>
         </div>
       </form>

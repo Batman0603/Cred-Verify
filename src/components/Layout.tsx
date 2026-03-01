@@ -9,7 +9,7 @@ const Layout = () => {
   if (!user) return null;
 
   return (
-    <div className="min-h-screen bg-slate-100 dark:bg-slate-950">
+    <div>
       <Navbar />
       <div className="mx-auto flex max-w-7xl gap-4 px-4 py-4">
         <Sidebar role={user.role} />
