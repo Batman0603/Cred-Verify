@@ -9,6 +9,20 @@ import { ThemeProvider } from './context/ThemeContext';
 
 const RootProviders = () => (
   <ThemeProvider>
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <ThemeProvider>
+      <BrowserRouter>
+        <AuthProvider>
+          <CredentialProvider>
+            <App />
+          </CredentialProvider>
+        </AuthProvider>
+      </BrowserRouter>
+    </ThemeProvider>
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
         <CredentialProvider>

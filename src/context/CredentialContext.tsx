@@ -19,6 +19,16 @@ export interface IssueCredentialInput {
 interface UpdateCredentialInput {
   degree: string;
   issueDate: string;
+import { createContext, ReactNode, useContext, useMemo, useState } from 'react';
+import { Credential, VerificationResult } from '../types';
+import { issueCredential, verifyCredentialOnChain } from '../services/mockCredentialService';
+
+interface IssueCredentialInput {
+  studentName: string;
+  studentId: string;
+  degree: string;
+  issueDate: string;
+  universityName: string;
 }
 
 interface CredentialContextValue {
@@ -121,6 +131,7 @@ export const CredentialProvider = ({ children }: { children: ReactNode }) => {
 
   const value = useMemo(
     () => ({ credentials, issueNewCredential, updateCredential, deleteCredential, revokeCredential, verifyCredential }),
+    () => ({ credentials, issueNewCredential, revokeCredential, verifyCredential }),
     [credentials],
   );
 
