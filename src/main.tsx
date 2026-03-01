@@ -18,5 +18,15 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         </AuthProvider>
       </BrowserRouter>
     </ThemeProvider>
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <AuthProvider>
+        <CredentialProvider>
+          <App />
+        </CredentialProvider>
+      </AuthProvider>
+    </BrowserRouter>
   </React.StrictMode>,
 );

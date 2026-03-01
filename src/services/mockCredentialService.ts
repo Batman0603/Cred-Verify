@@ -23,6 +23,12 @@ const buildPayload = (id: string, data: IssueInput) =>
 export const issueCredential = async (data: IssueInput): Promise<Credential> => {
   const id = createCredentialId();
   const chain = await anchorCredentialToBlockchain(buildPayload(id, data));
+export const issueCredential = async (
+  data: Omit<Credential, 'id' | 'status' | 'blockchainHash' | 'transactionHash'>,
+): Promise<Credential> => {
+  const id = createCredentialId();
+  const payload = JSON.stringify({ id, ...data });
+  const chain = await anchorCredentialToBlockchain(payload);
 
   return {
     ...data,
@@ -49,5 +55,15 @@ export const createSeedCredential = async (
 
 export const verifyCredentialOnChain = async (credential: Credential) => {
   const payload = buildPayload(credential.id, credential);
+export const verifyCredentialOnChain = async (credential: Credential) => {
+  const payload = JSON.stringify({
+    id: credential.id,
+    studentName: credential.studentName,
+    studentId: credential.studentId,
+    degree: credential.degree,
+    issueDate: credential.issueDate,
+    universityName: credential.universityName,
+  });
+
   return verifyBlockchainHash(payload, credential.blockchainHash);
 };

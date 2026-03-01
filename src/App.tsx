@@ -5,6 +5,7 @@ import Landing from './pages/Landing';
 import Login from './pages/Login';
 import MerchantDashboard from './pages/MerchantDashboard';
 import Register from './pages/Register';
+import RoleSelector from './pages/RoleSelector';
 import StudentDashboard from './pages/StudentDashboard';
 import UniversityDashboard from './pages/UniversityDashboard';
 
@@ -13,6 +14,14 @@ const App = () => (
     <Route path="/" element={<Landing />} />
     <Route path="/login" element={<Login />} />
     <Route path="/register" element={<Register />} />
+    <Route
+      path="/role-select"
+      element={
+        <ProtectedRoute>
+          <RoleSelector />
+        </ProtectedRoute>
+      }
+    />
 
     <Route
       element={
@@ -34,6 +43,10 @@ const App = () => (
         element={
           <ProtectedRoute requiredRole="university">
             <UniversityDashboard view="credentials" />
+        path="/university"
+        element={
+          <ProtectedRoute requiredRole="university">
+            <UniversityDashboard />
           </ProtectedRoute>
         }
       />
@@ -58,6 +71,10 @@ const App = () => (
         element={
           <ProtectedRoute requiredRole="merchant">
             <MerchantDashboard view="dashboard" />
+        path="/student"
+        element={
+          <ProtectedRoute requiredRole="student">
+            <StudentDashboard />
           </ProtectedRoute>
         }
       />
@@ -66,6 +83,10 @@ const App = () => (
         element={
           <ProtectedRoute requiredRole="merchant">
             <MerchantDashboard view="credentials" />
+        path="/merchant"
+        element={
+          <ProtectedRoute requiredRole="merchant">
+            <MerchantDashboard />
           </ProtectedRoute>
         }
       />
